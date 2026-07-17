@@ -452,7 +452,12 @@ with col4:
     fig_acc.add_trace(go.Bar(name="Not accomplished",      y=msme_rates["msme"], x=msme_rates["Not accomplished"],      orientation="h", marker_color="#ef4444"))
     fig_acc.update_layout(
         barmode="stack", title="Accomplishment Rate per MSME (%)",
-        title_font_size=14, height=330, font=dict(size=12),
+        title_font_size=14, height=310, font=dict(size=12),
+        margin=dict(t=40,b=10,l=0,r=10),
+        paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="#fafafa",
+        xaxis=dict(ticksuffix="%", range=[0,100]),
+        yaxis_title="",
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1, font_size=12),
     )
     st.plotly_chart(fig_acc, use_container_width=True)
 
@@ -470,7 +475,11 @@ with col5:
     ))
     fig_trend.update_layout(
         title="Semester Trend: Accomplishment Rate (%)",
-        title_font_size=14, height=330, font=dict(size=12),
+        title_font_size=14, height=310, font=dict(size=12),
+        margin=dict(t=40,b=10,l=0,r=10),
+        paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="#fafafa",
+        xaxis_title="", yaxis=dict(range=[0,110], ticksuffix="%"),
+        showlegend=False,
     )
     fig_trend.add_hrect(y0=0, y1=60, fillcolor="#fee2e2", opacity=0.15, line_width=0, annotation_text="Below target zone", annotation_position="top left", annotation_font_size=11)
     st.plotly_chart(fig_trend, use_container_width=True)
