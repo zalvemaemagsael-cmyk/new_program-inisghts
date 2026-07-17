@@ -598,7 +598,7 @@ if len(dual_flag) > 0:
     for _, row in dual_flag.iterrows():
         st.markdown(f"""
 <div class="flag-card">
-  <h4>🚨 {row['msme']} <span class="badge badge-critical">Dual Flag</span></h4>
+  <h4> {row['msme']} <span class="badge badge-critical">Dual Flag</span></h4>
   <p>This MSME is <strong>underperforming in outputs</strong> ({row['acc_rate']:.1f}% accomplishment rate) 
   <strong>AND flagged as {row['risk']} risk of not completing the project</strong>. 
   Province: {row['province']} · Sector: {row['sector']} · Org Type: {row['org_type']}.
@@ -608,7 +608,7 @@ if len(dual_flag) > 0:
 else:
     st.markdown("""
 <div class="insight-box">
-  <h4>✅ No dual-flagged MSMEs at this time</h4>
+  <h4>No dual-flagged MSMEs at this time</h4>
   <p>No MSME is simultaneously underperforming in outputs and classified as High/Critical risk of not completing the project.</p>
 </div>
 """, unsafe_allow_html=True)
@@ -620,7 +620,7 @@ if len(low_acc) > 0:
         risk_badge = f'<span class="badge badge-{row["risk"].lower()}">{row["risk"]} Risk</span>'
         st.markdown(f"""
 <div class="insight-box">
-  <h4>⚠️ {row['msme']} — Consistently Low Accomplishment {risk_badge}</h4>
+  <h4> {row['msme']} — Consistently Low Accomplishment {risk_badge}</h4>
   <p>Overall accomplishment rate of <strong>{row['acc_rate']:.1f}%</strong> across all assessed semesters. 
   Consider reviewing project milestones and scheduling a field visit. 
   Province: {row['province']} · Sector: {row['sector']}.</p>
@@ -630,12 +630,12 @@ if len(low_acc) > 0:
 # High performing MSMEs
 high_acc = msme_acc_rate[msme_acc_rate["acc_rate"] >= 80].sort_values("acc_rate", ascending=False)
 if len(high_acc) > 0:
-    st.markdown("**🌟 Booming MSMEs — High Accomplishment Rate**")
+    st.markdown("Booming MSMEs — High Accomplishment Rate")
     for _, row in high_acc.iterrows():
         risk_badge = f'<span class="badge badge-{row["risk"].lower()}">{row["risk"]} Risk</span>'
         st.markdown(f"""
 <div class="insight-box">
-  <h4>🌟 {row['msme']} — {row['acc_rate']:.1f}% Accomplishment Rate {risk_badge}</h4>
+  <h4> {row['msme']} — {row['acc_rate']:.1f}% Accomplishment Rate {risk_badge}</h4>
   <p>Consistently meeting or exceeding targets. 
   Province: {row['province']} · Sector: {row['sector']} · Org: {row['org_type']}. 
   A strong candidate for success story documentation and replication.</p>
