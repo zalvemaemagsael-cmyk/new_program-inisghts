@@ -3,6 +3,9 @@ import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 import json
+import os
+
+APP_DIR = os.path.dirname(os.path.abspath(__file__))
 
 st.set_page_config(
     page_title="Program Insights – DOST SETUP 4.0 iFund",
@@ -624,7 +627,7 @@ if len(high_acc) > 0:
 # ══════════════════════════════════════════════════════════════════════════════
 st.markdown('<div class="section-title">Provincial Risk Map — Region VI</div>', unsafe_allow_html=True)
 
-with open("assets/region6_provinces.geojson", "r") as f:
+with open(os.path.join(APP_DIR, "assets", "region6_provinces.geojson"), "r") as f:
     region6_geojson = json.load(f)
 
 REGION6_PROVINCES = ["Aklan", "Antique", "Capiz", "Iloilo", "Negros Occidental", "Guimaras"]
