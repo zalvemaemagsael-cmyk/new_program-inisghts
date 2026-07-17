@@ -330,12 +330,12 @@ fig_track = px.bar(
     text="Count", title="MSMEs by Program Track",
 )
 fig_track.update_layout(
-    showlegend=False, height=380, title_font_size=19, font=dict(size=16),
+    showlegend=False, height=380, title_font_size=14, font=dict(size=12),
     margin=dict(t=44, b=10, l=0, r=0),
     paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="#fafafa",
     xaxis_title="", yaxis_title="Count",
 )
-fig_track.update_traces(textposition="outside", textfont_size=19)
+fig_track.update_traces(textposition="outside", textfont_size=12)
 st.plotly_chart(fig_track, use_container_width=True)
 st.caption("Placeholder tiers — update the `program_track` column in the data section with each MSME's actual Surge Up / Scale Up / Step Up classification.")
 
@@ -359,12 +359,12 @@ with col1:
         text="Count", title="MSMEs by Risk Tier",
     )
     fig_r.update_layout(
-        showlegend=False, height=380, title_font_size=19, font=dict(size=16),
+        showlegend=False, height=380, title_font_size=14, font=dict(size=12),
         margin=dict(t=44,b=10,l=0,r=0),
         paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="#fafafa",
         xaxis_title="", yaxis_title="",
     )
-    fig_r.update_traces(textposition="outside", textfont_size=17)
+    fig_r.update_traces(textposition="outside", textfont_size=12)
     st.plotly_chart(fig_r, use_container_width=True)
 
 with col2:
@@ -383,11 +383,11 @@ with col2:
     )
     fig_prov.update_coloraxes(showscale=False)
     fig_prov.update_layout(
-        height=380, title_font_size=19, font=dict(size=16),
+        height=380, title_font_size=14, font=dict(size=12),
         margin=dict(t=44,b=10,l=0,r=0),
         paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="#fafafa",
     )
-    fig_prov.update_traces(texttemplate="%{text:.1f}", textposition="outside", textfont_size=17)
+    fig_prov.update_traces(texttemplate="%{text:.1f}", textposition="outside", textfont_size=12)
     st.plotly_chart(fig_prov, use_container_width=True)
 
 with col3:
@@ -403,11 +403,11 @@ with col3:
     )
     fig_org.update_coloraxes(showscale=False)
     fig_org.update_layout(
-        height=380, title_font_size=19, font=dict(size=16),
+        height=380, title_font_size=14, font=dict(size=12),
         margin=dict(t=44,b=10,l=0,r=0),
         paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="#fafafa",
     )
-    fig_org.update_traces(texttemplate="%{text:.1f}", textposition="outside", textfont_size=17)
+    fig_org.update_traces(texttemplate="%{text:.1f}", textposition="outside", textfont_size=12)
     st.plotly_chart(fig_org, use_container_width=True)
 
 # Refund progress bars
@@ -421,13 +421,13 @@ for _, row in ref_sorted.iterrows():
         marker_color=c, text=f'{row["refund_pct"]:.1f}%  ({row["risk"]} Risk)',
         textposition="outside", showlegend=False,
     ))
-fig_ref.add_vline(x=100, line_dash="dash", line_color="#aaa", annotation_text="100% target", annotation_font_size=14)
+fig_ref.add_vline(x=100, line_dash="dash", line_color="#aaa", annotation_text="100% target", annotation_font_size=11)
 fig_ref.update_layout(
     height=320, margin=dict(t=10,b=10,l=0,r=90),
     paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="#fafafa",
     xaxis=dict(range=[0,130], ticksuffix="%"),
     yaxis_title="",
-    font=dict(size=16),
+    font=dict(size=12),
 )
 st.plotly_chart(fig_ref, use_container_width=True)
 
@@ -452,7 +452,7 @@ with col4:
     fig_acc.add_trace(go.Bar(name="Not accomplished",      y=msme_rates["msme"], x=msme_rates["Not accomplished"],      orientation="h", marker_color="#ef4444"))
     fig_acc.update_layout(
         barmode="stack", title="Accomplishment Rate per MSME (%)",
-        title_font_size=19, height=400, font=dict(size=16),
+        title_font_size=14, height=400, font=dict(size=12),
     )
     st.plotly_chart(fig_acc, use_container_width=True)
 
@@ -470,9 +470,9 @@ with col5:
     ))
     fig_trend.update_layout(
         title="Semester Trend: Accomplishment Rate (%)",
-        title_font_size=19, height=400, font=dict(size=16),
+        title_font_size=14, height=400, font=dict(size=12),
     )
-    fig_trend.add_hrect(y0=0, y1=60, fillcolor="#fee2e2", opacity=0.15, line_width=0, annotation_text="Below target zone", annotation_position="top left", annotation_font_size=14)
+    fig_trend.add_hrect(y0=0, y1=60, fillcolor="#fee2e2", opacity=0.15, line_width=0, annotation_text="Below target zone", annotation_position="top left", annotation_font_size=11)
     st.plotly_chart(fig_trend, use_container_width=True)
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -496,7 +496,7 @@ with col6:
         labels={"total_sales":"Total Sales (PHP)","sector":"","growth":"Growth %"},
     )
     fig_sec.update_layout(
-        height=360, title_font_size=18, font=dict(size=15),
+        height=360, title_font_size=14, font=dict(size=12),
         margin=dict(t=40,b=10,l=0,r=0),
         paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="#fafafa",
         coloraxis_colorbar=dict(title="Growth %", ticksuffix="%", len=0.6),
@@ -517,7 +517,7 @@ with col7:
         labels={"total_sales":"Total Sales (PHP)","province":"","growth":"Growth %"},
     )
     fig_prsales.update_layout(
-        height=360, title_font_size=18, font=dict(size=15),
+        height=360, title_font_size=14, font=dict(size=12),
         margin=dict(t=40,b=10,l=0,r=0),
         paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="#fafafa",
         coloraxis_colorbar=dict(title="Growth %", ticksuffix="%", len=0.6),
@@ -541,7 +541,7 @@ with col8:
         labels={"total_sales":"Total Sales (PHP)","education":"Education Level","avg_growth":"Avg Growth %"},
     )
     fig_edu.update_layout(
-        height=360, title_font_size=18, font=dict(size=15),
+        height=360, title_font_size=14, font=dict(size=12),
         margin=dict(t=40,b=10,l=0,r=0),
         paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="#fafafa",
         coloraxis_colorbar=dict(title="Growth %", ticksuffix="%", len=0.6),
@@ -561,11 +561,11 @@ fig_quad = px.scatter(
     color_discrete_sequence=["#6366f1","#f59e0b"],
     labels={"acc_rate":"Output Accomplishment Rate (%)","avg_risk_score":"Avg 'At Risk' Score","sector":"Sector"},
 )
-fig_quad.add_hline(y=sector_combined["avg_risk_score"].mean(), line_dash="dot", line_color="#aaa", annotation_text="Avg risk", annotation_font_size=14)
-fig_quad.add_vline(x=sector_combined["acc_rate"].mean(), line_dash="dot", line_color="#aaa", annotation_text="Avg accomplishment", annotation_font_size=14)
-fig_quad.update_traces(textposition="top center", marker=dict(size=20, opacity=0.85), textfont_size=17)
+fig_quad.add_hline(y=sector_combined["avg_risk_score"].mean(), line_dash="dot", line_color="#aaa", annotation_text="Avg risk", annotation_font_size=11)
+fig_quad.add_vline(x=sector_combined["acc_rate"].mean(), line_dash="dot", line_color="#aaa", annotation_text="Avg accomplishment", annotation_font_size=11)
+fig_quad.update_traces(textposition="top center", marker=dict(size=20, opacity=0.85), textfont_size=12)
 fig_quad.update_layout(
-    height=420, font=dict(size=16),
+    height=420, font=dict(size=12),
     margin=dict(t=20,b=20,l=0,r=0),
     paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="#fafafa",
     xaxis=dict(ticksuffix="%", range=[0,110]),
@@ -680,10 +680,10 @@ fig_choro = px.choropleth_mapbox(
 )
 fig_choro.update_traces(marker_line_width=1.2, marker_line_color="#ffffff")
 fig_choro.update_layout(
-    height=560, font=dict(size=16),
+    height=560, font=dict(size=12),
     margin=dict(t=10, b=0, l=0, r=0),
     paper_bgcolor="rgba(0,0,0,0)",
-    legend=dict(title="Avg Risk", orientation="h", yanchor="bottom", y=1.01, xanchor="right", x=1, font_size=15),
+    legend=dict(title="Avg Risk", orientation="h", yanchor="bottom", y=1.01, xanchor="right", x=1, font_size=12),
 )
 st.plotly_chart(fig_choro, use_container_width=True)
 st.caption("Province fill = average 'at risk of not completing the project' score of enrolled MSMEs (darker red = higher risk).")
