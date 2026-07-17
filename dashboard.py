@@ -583,7 +583,7 @@ st.markdown('<div class="section-title">Sector Comparison: Output Completion vs 
 fig_quad = px.scatter(
     sector_combined,
     x="acc_rate", y="avg_risk_score",
-    text="sector", size=[30,30],
+    text="sector",
     color="sector",
     color_discrete_sequence=["#6366f1","#f59e0b"],
     labels={"acc_rate":"Output Accomplishment Rate (%)","avg_risk_score":"Avg 'At Risk' Score","sector":"Sector"},
