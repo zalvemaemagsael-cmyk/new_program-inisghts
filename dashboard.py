@@ -230,6 +230,14 @@ if not selected_provinces:
 msmes  = msmes[msmes["province"].isin(selected_provinces)].reset_index(drop=True)
 impact = impact[impact["province"].isin(selected_provinces)].reset_index(drop=True)
 
+if msmes.empty:
+    st.info(
+        "No enrolled MSMEs in the selected province(s) yet — "
+        f"{', '.join(selected_provinces)} currently {'has' if len(selected_provinces)==1 else 'have'} no enrolled MSMEs on record. "
+        "Select a different province to see program data."
+    )
+    st.stop()
+
 # Semester order for charts
 SEM_ORDER = ["S2 2021","S1 2023","S2 2023","S1 2024","S2 2024"]
 
