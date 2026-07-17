@@ -386,8 +386,9 @@ with col2:
     fig_prov.update_coloraxes(showscale=False)
     fig_prov.update_layout(
         height=310, title_font_size=14, font=dict(size=12),
-        margin=dict(t=44,b=10,l=0,r=0),
+        margin=dict(t=44,b=10,l=0,r=30),
         paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="#fafafa",
+        xaxis=dict(range=[0, prov_risk_full["avg_score"].max() * 1.2 + 0.5]),
     )
     fig_prov.update_traces(texttemplate="%{text:.1f}", textposition="outside", textfont_size=12, cliponaxis=False)
     st.plotly_chart(fig_prov, use_container_width=True)
@@ -406,8 +407,9 @@ with col3:
     fig_org.update_coloraxes(showscale=False)
     fig_org.update_layout(
         height=310, title_font_size=14, font=dict(size=12),
-        margin=dict(t=44,b=10,l=0,r=0),
+        margin=dict(t=44,b=10,l=0,r=30),
         paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="#fafafa",
+        xaxis=dict(range=[0, org_risk["d_score"].max() * 1.2 + 0.5]),
     )
     fig_org.update_traces(texttemplate="%{text:.1f}", textposition="outside", textfont_size=12, cliponaxis=False)
     st.plotly_chart(fig_org, use_container_width=True)
@@ -421,7 +423,7 @@ for _, row in ref_sorted.iterrows():
     fig_ref.add_trace(go.Bar(
         x=[row["refund_pct"]], y=[row["name"]], orientation="h",
         marker_color=c, text=f'{row["refund_pct"]:.1f}%  ({row["risk"]} Risk)',
-        textposition="outside", showlegend=False,
+        textposition="outside", showlegend=False, cliponaxis=False,
     ))
 fig_ref.add_vline(x=100, line_dash="dash", line_color="#aaa", annotation_text="100% target", annotation_font_size=11)
 fig_ref.update_layout(
@@ -608,7 +610,7 @@ if len(dual_flag) > 0:
 else:
     st.markdown("""
 <div class="insight-box">
-  <h4>No dual-flagged MSMEs at this time</h4>
+  <h4> No dual-flagged MSMEs at this time</h4>
   <p>No MSME is simultaneously underperforming in outputs and classified as High/Critical risk of not completing the project.</p>
 </div>
 """, unsafe_allow_html=True)
@@ -630,7 +632,7 @@ if len(low_acc) > 0:
 # High performing MSMEs
 high_acc = msme_acc_rate[msme_acc_rate["acc_rate"] >= 80].sort_values("acc_rate", ascending=False)
 if len(high_acc) > 0:
-    st.markdown("Booming MSMEs — High Accomplishment Rate")
+    st.markdown(" Booming MSMEs — High Accomplishment Rate")
     for _, row in high_acc.iterrows():
         risk_badge = f'<span class="badge badge-{row["risk"].lower()}">{row["risk"]} Risk</span>'
         st.markdown(f"""
