@@ -625,7 +625,7 @@ if len(low_acc) > 0:
 # High performing MSMEs
 high_acc = msme_acc_rate[msme_acc_rate["acc_rate"] >= 80].sort_values("acc_rate", ascending=False)
 if len(high_acc) > 0:
-    st.markdown("** Booming MSMEs — High Accomplishment Rate**")
+    st.markdown("Booming MSMEs — High Accomplishment Rate")
     for _, row in high_acc.iterrows():
         risk_badge = f'<span class="badge badge-{row["risk"].lower()}">{row["risk"]} Risk</span>'
         st.markdown(f"""
